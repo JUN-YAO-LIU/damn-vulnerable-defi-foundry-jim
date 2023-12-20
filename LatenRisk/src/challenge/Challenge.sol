@@ -54,6 +54,7 @@ contract Challenge {
         CETH = dd.create2("CETH", "cETH");
         CWETH = dd.create2("CWETH", "cWETH");
 
+        // erc20 token underlying asset
         CUSD.mint(address(this), 10000 ether);
         CStUSD.mint(address(this), 10000 ether);
         CETH.mint(address(this), 10000 ether);
@@ -97,6 +98,7 @@ contract Challenge {
         comptroller._setCloseFactor(0.5 ether);
         comptroller._setLiquidationIncentive(1 ether);
 
+        // cToken
         CCUSD.mint(10000 ether);
         CCStUSD.mint(10000 ether);
         CCETH.mint(10000 ether);
@@ -108,6 +110,7 @@ contract Challenge {
     function isSolved() external view returns (bool) {
         address target = address(uint160(seed));
 
+        // init eth total price
         uint256 initUSD = 10000 ether * oracle.getUnderlyingPrice(CToken(CCWETH)) / 1e18;
 
         uint256 profitUSD = (

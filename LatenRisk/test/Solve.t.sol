@@ -47,6 +47,8 @@ contract Solve is Test {
 
     function testSolve() public {
         /* Solve here */
+        vm.startPrank(target);
+        vm.stopPrank();
 
         assertEq(chall.isSolved(), true);
     }
